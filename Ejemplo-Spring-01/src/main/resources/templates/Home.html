@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th ="http://thymeleaf.org" >
+<html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title th:text="${Titulopagina}"></title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+
 </head>
 <body>
-	<h1 th:text= "${Titulo}"></h1>
-	<hr>
-	<ul th:each="Usuario: ${Perfil}">
-	
-		<li  th:text= "${Usuario.Nombre}" ></li>
-		<li  th:text= "${Usuario.Apellido}" ></li>
-		<li  th:text= "${Usuario.Hotmail}" ></li>
-		<li  th:text= "${Usuario.Clave}" ></li>
-	</ul>
-	
+
+
+	<div class ="container">
+		<h1 th:text="${Titulo}"></h1>
+		<hr>
+		<h2 th:text="${Estado}"></h2>
+		<br>
+		<ul th:each="Usuario: ${Perfil}">
+
+			<li class="list-group-item" th:text="${Usuario.Nombre}"></li>
+			<li class="list-group-item" th:text="${Usuario.Apellido}"></li>
+			<li class="list-group-item" th:text="${Usuario.Hotmail}"></li>
+			<li class="list-group-item" th:text="${Usuario.Clave}"></li>
+		</ul>
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
 

@@ -1,15 +1,14 @@
 package com.empresa.rubro.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.empresa.rubro.models.Usuario;
+import com.empresa.rubro.service.UsuarioService;
 
 
 @Controller
@@ -19,26 +18,24 @@ public class RubroController {
 	@Value("${title.generic}")
 	private String TitlePage;
 	
+	@Autowired
+	private UsuarioService personaje = new UsuarioService();
+	
 	@GetMapping ({"/home","/inicio","/","/home", "/inicio"})
 	public String HolaMundo(Model model){
 		
 		
-			Usuario Datos = new Usuario();
-			
-			Datos.setNombre("Pinga");
-			Datos.setApellido("Ancco");
-			Datos.setHotmail("chamakito@hotmail.com");
-			Datos.setClave("123");
-			
-		
-			List<Usuario> perfil = new ArrayList<>();	
-			perfil.add(Datos);
-			
 		
 			model.addAttribute("Titulopagina", TitlePage);
 			model.addAttribute("Titulo", "Nombre Empresa");
-			model.addAttribute("Perfil", perfil);
 			
+			if (personaje.crearpersonaje().getEstado()) {
+				
+				model.addAttribute("Perfil", personaje.crearpersonaje().getData());
+				
+			}
+			model.addAttribute("Estado", personaje.crearpersonaje().getMensaje());
+	
 			return "Home";
 		
 		
