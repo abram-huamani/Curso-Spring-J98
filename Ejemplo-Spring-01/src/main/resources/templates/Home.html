@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+<title th:text="${Titulopagina}"></title>
+</head>
+<body>
+	<h1 th:text= "${Titulo}"></h1>
+	<hr>
+	<ul th:each="Usuario: ${Perfil}">
+	
+		<li  th:text= "${Usuario.Nombre}" ></li>
+		<li  th:text= "${Usuario.Apellido}" ></li>
+		<li  th:text= "${Usuario.Hotmail}" ></li>
+		<li  th:text= "${Usuario.Clave}" ></li>
+	</ul>
+	
+</body>
+</html>
+
